@@ -6,6 +6,7 @@ const longestString = (word1, word2) => {
 
 const isPrime = num => {
   if (typeof num !== "number") throw new Error("O valor deve ser um número!!")
+  if (!Number.isInteger(num)) return false
   if (num <= 1) return false
 
   for (let i = 2; i <= Math.sqrt(num); i++) {

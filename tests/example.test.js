@@ -1,5 +1,5 @@
 import { describe, expect, it, test } from "vitest"
-import { longestString, isPrime } from "../src/example1"
+import { longestString, isPrime } from "../src/example"
 
 describe("examples.longestString", () => {
   it("returns the logest word", () => {
@@ -23,7 +23,7 @@ describe("examples.longestString", () => {
   })
 })
 
-describe("examples.isPrime", () => {
+describe("examples.isPrime test 1", () => {
   test("returns true/truthy for small prime numbers", () => {
     expect(isPrime(2)).toBe(true)
     expect(isPrime(3)).toBe(true)
@@ -69,5 +69,40 @@ describe("examples.isPrime", () => {
     // ambos fazem a mesma coisa, tanto faz
     expect(isPrime(7)).toBeTypeOf("boolean")
     expect(typeof isPrime(8)).toBe("boolean")
+  })
+})
+
+describe("examples.isPrime test 2", () => {
+  it("treats 0 and 1 as non-prime, and 2 as prime", () => {
+    expect(isPrime(0)).toBe(false)
+    expect(isPrime(1)).toBe(false)
+    expect(isPrime(2)).toBe(true)
+  })
+
+  it("returns false all even numbers > 2", () => {
+    expect(isPrime(4)).toBe(false)
+    expect(isPrime(10)).toBe(false)
+    expect(isPrime(100)).toBe(false)
+  })
+
+  it("identifies common primes", () => {
+    expect(isPrime(3)).toBe(true)
+    expect(isPrime(5)).toBe(true)
+  })
+
+  it("returns false for perfect squares reliably", () => {
+    expect(isPrime(49)).toBe(false)
+    expect(isPrime(121)).toBe(false)
+  })
+
+  it("returns false for non-integers", () => {
+    expect(isPrime(2.5)).toBe(false)
+  })
+
+  it("throws an error for non-number inputs", () => {
+    const badCall = () => isPrime("pikachu")
+
+    expect(badCall).toThrow()
+    expect(badCall).toThrow("O valor deve ser um número!!")
   })
 })
