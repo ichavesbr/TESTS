@@ -18,7 +18,7 @@ const isPrime = num => {
   return true
 }
 
-// retorna o valor do envio
+// verifica o valor do envio
 const shippingCost = (weight, coupon = "") => {
   // faz verificação manual porque não está usando Typescript
   if (typeof weight !== "number") throw new Error("Weight must be a number")
