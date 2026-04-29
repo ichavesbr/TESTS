@@ -12,7 +12,7 @@ const createCards = ({ suits, values }) => {
 
   for (const suit of suits) {
     for (const value of values) {
-      cards.push(`${value} of ${suit}`)
+      cards.push({ suit, value })
     }
   }
 

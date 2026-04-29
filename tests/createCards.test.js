@@ -26,4 +26,22 @@ describe("createCards", () => {
     expect(() => createCards({ suits: "not an array", values })).toThrow()
     expect(() => createCards({ suits, values: "not an array" })).toThrow()
   })
+  it("creates card objects with { suits, values } properties", () => {
+    const cards = createCards({ suits, values })
+    const sample = cards[0]
+
+    expect(sample).toBeTypeOf("object")
+    expect(sample).toHaveProperty("suit")
+    expect(sample).toHaveProperty("value")
+  })
+
+  it("creates combinations of suits and values", () => {
+    const cards = createCards({ suits, values })
+
+    const tenOfHearts = cards.find(c => c.value === "10" && c.suit === "Hearts")
+    expect(tenOfHearts).toBeDefined()
+
+    const aceOfSpades = cards.find(c => c.value === "Ace" && c.suit === "Spades")
+    expect(aceOfSpades).toBeDefined()
+  })
 })
