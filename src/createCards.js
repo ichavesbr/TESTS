@@ -8,6 +8,14 @@ const createCards = ({ suits, values }) => {
     throw new RangeError("suits and values must be standarts lenghts (4 and 13)")
   }
 
+  if (new Set(suits).size !== suits.length) {
+    throw new Error("suits array contain duplicates")
+  }
+
+  if (new Set(values).size !== values.length) {
+    throw new Error("values array contain duplicates")
+  }
+
   let cards = []
 
   for (const suit of suits) {

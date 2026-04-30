@@ -26,6 +26,7 @@ describe("createCards", () => {
     expect(() => createCards({ suits: "not an array", values })).toThrow()
     expect(() => createCards({ suits, values: "not an array" })).toThrow()
   })
+
   it("creates card objects with { suits, values } properties", () => {
     const cards = createCards({ suits, values })
     const sample = cards[0]
@@ -43,5 +44,13 @@ describe("createCards", () => {
 
     const aceOfSpades = cards.find(c => c.value === "Ace" && c.suit === "Spades")
     expect(aceOfSpades).toBeDefined()
+  })
+
+  it("throws an error for duplicate suits or values", () => {
+    expect(() => createCards({ suits: ["Hearts", "Diamonds", "Clubs", "Clubs"], values })).toThrow(/duplicates/)
+
+    expect(() =>
+      createCards({ suits, values: ["Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "Ace"] }),
+    ).toThrow(/duplicates/)
   })
 })
