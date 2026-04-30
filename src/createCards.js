@@ -1,4 +1,4 @@
-// retorn um array
+// retorna um array
 const createCards = ({ suits, values }) => {
   if (!Array.isArray(suits) || !Array.isArray(values)) {
     throw new TypeError("suits and values must be arrays")
@@ -8,6 +8,7 @@ const createCards = ({ suits, values }) => {
     throw new RangeError("suits and values must be standarts lenghts (4 and 13)")
   }
 
+  // Set remove itens repetidos
   if (new Set(suits).size !== suits.length) {
     throw new Error("suits array contain duplicates")
   }
@@ -18,6 +19,7 @@ const createCards = ({ suits, values }) => {
 
   let cards = []
 
+  // cria um array de objetos (suit, value) com todas as 52 combinações possíveis
   for (const suit of suits) {
     for (const value of values) {
       cards.push({ suit, value })
